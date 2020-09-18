@@ -1,0 +1,30 @@
+ 
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap 
+@import '~bootstrap/scss/bootstrap';
+
+//bootstrap select
+@import "~bootstrap-select/dist/css/bootstrap-select.min.css";
+
+//admin-lte
+@import '~admin-lte/dist/css/adminlte.min.css';
+@import '~admin-lte/dist/css/adminlte.css';
+//admin-lte fontawesaome
+$fa-font-path: "../webfonts";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+//chart-js
+@import '~chart.js/dist/Chart.min.css';
+@import '~chart.js/dist/Chart.css';
