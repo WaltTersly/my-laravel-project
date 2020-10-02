@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'preventBackHistory'],function(){
 
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });
 
 
@@ -101,6 +102,10 @@ Route::middleware(['roles:cashier'])->group(function () {
     Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
     //Route::resource('/training/trainers', 'Training\\TrainersController');
     Route::get('/cashierprofile', 'CashierprofileController@index');
+    Route::get('/profilepicture', 'AvatarController@getProfileAvatar')->name('profileavatar');
+    Route::post('/profilepicture', 'AvatarController@profilePictureUpload')->name('profileavatar');
+    Route::get('changepassword', 'Auth\ChangePasswordController@index')->name('password.change');
+    Route::post('changepassword', 'Auth\ChangePasswordController@updatePassword')->name("password.update");
 });
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/profile', 'ProfileController@index');
@@ -116,3 +121,4 @@ Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
 // Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
 // Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
 // route::resource('/admin','AdminController');
+});

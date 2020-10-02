@@ -88,4 +88,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Member');
     }
 
+    public function cashier()
+    {
+
+        return $this->hasOne('App\Cashier');
+    }
+
 }

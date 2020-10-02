@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           {{-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
-         <img src="{{URL::asset('/image/gym_bg.jpg')}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
+         <img src="/img/avatar/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
         </div>
         <div class="info">
           <a href="#" class="d-block" role="button">{{ Auth::user()->name }}<span class="caret"></span></a>
@@ -280,36 +280,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                       src="/img/avatar/{{Auth::user()->avatar}}"
                        alt="User profile picture">
                 </div>
                 
-              <h3 class="profile-username text-center">{{$user->cashier->first_name}}</h3>
+              <h3 class="profile-username text-center">{{$user->cashier->username}}</h3>
               
                 <p class="text-muted text-center"><i>Cashier</i></p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                    <li class="list-group-item">
-                    <b>First name</b> <a class="float-right">{{$user->cashier->first_name}}</a>
+                    <b>First name</b> <a class="float-right">{{$user->cashier->First_name}}</a>
                   </li>
                    <li class="list-group-item">
                     <b>surname</b> <a class="float-right">{{$user->cashier->surname}}</a>
                   </li>
-                  <li class="list-group-item">
+                  {{-- <li class="list-group-item">
                     <b>Idnumber</b> <a class="float-right">{{$user->cashier->idnumber}}</a>
+                  </li> --}}
+                  <li class="list-group-item">
+                    <b>Gender</b> <a class="float-right">{{$user->cashier->Gender}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">{{$user->cashier->gender}}</a>
+                    <b>Address</b> <a class="float-right">{{$user->cashier->Address}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Address</b> <a class="float-right">{{$user->cashier->address}}</a>
+                    <b>Telephone</b> <a class="float-right">{{$user->cashier->Telephone}}</a>
                   </li>
-                  <li class="list-group-item">
-                    <b>Telephone</b> <a class="float-right">{{$user->cashier->telephone}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Registration day</b> <a class="float-right">{{$user->cashier->registration_day}}</a>
-                  </li>
+                 
                 </ul>
 
                

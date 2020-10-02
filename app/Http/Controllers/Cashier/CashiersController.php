@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cashier;
 
+use illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -42,7 +43,8 @@ class CashiersController extends Controller
      */
     public function create()
     {
-        return view('cashier.cashiers.create');
+        $cashier = new Cashier;
+        return view('cashier.cashiers.create',compact('cashier'));
     }
 
     /**

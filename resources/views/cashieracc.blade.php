@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           {{-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
-         <img src="{{URL::asset('/image/gym_bg.jpg')}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
+         <img src="/img/avatar/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
         </div>
         <div class="info">
           <a href="#" class="d-block" role="button">{{ Auth::user()->name }}<span class="caret"></span></a>
@@ -188,30 +188,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>profile</p>
                 </a>
               </li>
-           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs blue"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              {{-- <li class="nav-item">
-                <a href="{{ url('/permisions') }}" class="nav-link active">
-                  {{-- <i class="far fa-circle nav-icon"></i> --
-                  <i class="fas fa-flag-checkered"></i>
-                  <p>Assign roles</p>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-cogs green"></i>
+                  <p>
+                    Settings
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
-              </li> --}}
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
+                <ul class="nav nav-treeview">
+                   <li class="nav-item">
+                   <a href="{{url('/changepassword')}}" class="nav-link active">
+                       <i class="far fa-circle nav-icon"></i> 
+                      <i class="fas fa-flag-checkered"></i>
+                      <p>Change Password</p>
+                    </a>
+                  </li> 
+                  <li class="nav-item">
+                    <a href="{{url('/profilepicture')}}" class="nav-link active">
+                       <i class="far fa-circle nav-icon"></i> 
+                      <i class="fas fa-flag-checkered"></i>
+                      <p>Change Profile Picture</p>
+                    </a>
+                  </li> 
+                </ul>
               </li>
-            </ul>
-          </li>
           <li class="nav-item ">
             <a href="{{ route('logout') }}" class="nav-link " 
             onclick="event.preventDefault();
