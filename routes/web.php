@@ -49,7 +49,7 @@ Route::middleware(['roles:Admin'])->group(function () {
 
 
     //Route::resource('admin/posts', 'Admin\\PostsController');
-    Route::get('/charts/membersinaperiod', 'Membership\\MembersController@getmembersNumberchart')->name('membersno');
+    Route::get('/equipmentchart', 'Equipment\\EquipmentsController@EquipsCharts')->name('Equipmentscharts');
     Route::resource('permisions', 'RolesController');
     Route::resource('membership/members', 'Membership\\MembersController');
     Route::resource('training/trainers', 'Training\\TrainersController');

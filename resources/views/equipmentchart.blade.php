@@ -295,19 +295,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-6">
-            {{-- <div class="card">
+            <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <div class="flex">
+                    <div class="W-1/2">
+                       {!! $chart->container() !!}
 
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
+                    </div>
 
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                </div>
+
+                
               </div>
-            </div> --}}
+            </div> 
 
             {{-- <div class="card card-primary card-outline">
               <div class="card-body">
@@ -388,6 +388,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <!--script src="dist/js/adminlte.min.js"></script-->
 {{-- <script src="dist/js/adminlte.min.js"></script> --}}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
 <script src="{{ asset('js/app.js') }}"></script>
+{!! $chart->script() !!}
+
 </body>
 </html>

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Equipment;
+use App\Charts\EquipmentLocationChart;
 use Illuminate\Http\Request;
 
 class EquipmentsController extends Controller
@@ -124,5 +125,23 @@ class EquipmentsController extends Controller
         Equipment::destroy($id);
 
         return redirect('equipment/equipments')->with('flash_message', 'Equipment deleted!');
+    }
+
+    public function EquipsCharts()
+    {
+        //setting up data to be passed to the chart via eloquent
+        $data = Equipment::all()
+        ->groupBy('Equipment_location')
+        ->map(function($item){
+            //return number of equipments in differnt location of the gym
+            return count($item);
+        });
+
+        $chart = new EquipmentLocationChart;
+        $chart-> labels($data->keys());
+        $chart->dataset('Equipments in ', 'bar', $data->values());
+
+
+        return view('/equipmentchart',['chart' => $chart]);
     }
 }
