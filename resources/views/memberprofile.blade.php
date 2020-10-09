@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           {{-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
-         <img src="{{URL::asset('/image/gym_bg.jpg')}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
+         <img src="/img/avatar/{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="profile Pic" height="160" width="1600">
         </div>
         <div class="info">
           <a href="#" class="d-block" role="button">{{ Auth::user()->name }}<span class="caret"></span></a>
@@ -280,7 +280,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                       src="/img/avatar/{{Auth::user()->avatar}}"
                        alt="User profile picture">
                 </div>
                 
