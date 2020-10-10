@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 use App\Equipment;
 use App\Charts\EquipmentLocationChart;
+use App\Charts\EquipmentStateChart;
+use App\Charts\EquipmentNumberInStorageChart;
+use App\Charts\EquipmentNumberInChart;
 use Illuminate\Http\Request;
 
 class EquipmentsController extends Controller
@@ -139,9 +142,43 @@ class EquipmentsController extends Controller
 
         $chart = new EquipmentLocationChart;
         $chart-> labels($data->keys());
+        $dataset = 
         $chart->dataset('Equipments in ', 'bar', $data->values());
+        $dataset->backgroundColor(collect(['#7158e2','#3ae374', '#ff3838']));
+        $dataset->color(collect(['#7d5fff','#32ff7e', '#ff4d4d']));
 
 
-        return view('/equipmentchart',['chart' => $chart]);
+        $datab= Equipment::all()
+        -> groupBy('State_of_equipment')
+        ->map(function($item){
+            //return number of equipments in differnt location of the gym
+            return count($item);
+        });
+        
+    
+
+        $chart1= new EquipmentStateChart;
+        $chart1-> labels($datab->keys());
+        $dataset=
+        $chart1->dataset('Equipments state ', 'bar', $datab->values());
+        $dataset->backgroundColor(collect(['#3ae374', '#ff3838']));
+        $dataset->color(collect(['#32ff7e', '#ff4d4d']));
+
+
+        $datac= Equipment::orderBy('Equipmentname')->pluck('number_in_store','Equipmentname');
+
+        $chart2= new EquipmentNumberInStorageChart;
+        $chart2->labels($datac->keys());
+        $dataset=
+        $chart2->dataset('Equipments in storage ', 'pie', $datac->values());
+        $dataset->backgroundColor(collect(['#3ae374', '#ff3838','#7158e2','#00FFFF']));
+        $dataset->color(collect(['#7d5fff','#32ff7e', '#ff4d4d','#FF00FF
+        ']));
+
+
+        
+
+        return view('/equipmentchart',compact('chart','chart1','chart2'));
     }
+    
 }

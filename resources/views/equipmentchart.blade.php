@@ -302,6 +302,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                        {!! $chart->container() !!}
 
                     </div>
+                    <div class="w-1/2">
+                      {!! $chart1->container() !!}
+
+                    </div>
+                    <div class="w-1/2">
+                      {!! $chart2->container() !!}
+
+                    </div>
 
                 </div>
 
@@ -391,9 +399,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>
 {!! $chart->script() !!}
 
+{!! $chart1->script() !!}
+{!! $chart2->script() !!}
 </body>
 </html>
