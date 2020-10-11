@@ -141,6 +141,7 @@ class EquipmentsController extends Controller
         });
 
         $chart = new EquipmentLocationChart;
+        $chart->title('Number of Equipments in various locations');
         $chart-> labels($data->keys());
         $dataset = 
         $chart->dataset('Equipments in ', 'bar', $data->values());
@@ -158,6 +159,7 @@ class EquipmentsController extends Controller
     
 
         $chart1= new EquipmentStateChart;
+        $chart1->title('State of Equipments');
         $chart1-> labels($datab->keys());
         $dataset=
         $chart1->dataset('Equipments state ', 'bar', $datab->values());
@@ -168,6 +170,7 @@ class EquipmentsController extends Controller
         $datac= Equipment::orderBy('Equipmentname')->pluck('number_in_store','Equipmentname');
 
         $chart2= new EquipmentNumberInStorageChart;
+        $chart2->title('equipments in storage');
         $chart2->labels($datac->keys());
         $dataset=
         $chart2->dataset('Equipments in storage ', 'pie', $datac->values());

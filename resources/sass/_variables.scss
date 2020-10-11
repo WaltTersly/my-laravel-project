@@ -54,3 +54,19 @@ $black: #050505;
 .black{
     color: $black;
 }
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .column {
+    flex: 50%;
+    margin: 20px;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }

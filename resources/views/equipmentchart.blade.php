@@ -296,25 +296,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row">
           <div class="col-lg-6">
             <div class="card">
-              <div class="card-body">
-                <div class="flex">
-                    <div class="W-1/2">
-                       {!! $chart->container() !!}
+              <div class="row">
+                <div class="column">
+                  {!! $chart->container() !!}
 
-                    </div>
-                    <div class="w-1/2">
-                      {!! $chart1->container() !!}
+                </div>
+                <div class="column">
+                  {!! $chart1->container() !!}
 
-                    </div>
-                    <div class="w-1/2">
-                      {!! $chart2->container() !!}
-
-                    </div>
+                </div>
+                <div class="card-body py-3 px-3">
+                  {!! $chart2->container() !!}
 
                 </div>
 
-                
               </div>
+                
+               
+
             </div> 
 
             {{-- <div class="card card-primary card-outline">
