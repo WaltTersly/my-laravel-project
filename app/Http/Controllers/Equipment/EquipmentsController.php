@@ -183,5 +183,8 @@ class EquipmentsController extends Controller
 
         return view('/equipmentchart',compact('chart','chart1','chart2'));
     }
+
+   
     
 }
+

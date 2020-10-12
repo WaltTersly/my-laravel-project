@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Cashier;
 use App\Equipment;
-use App\Member;
-use App\Trainer;
-use App\Trainschedule;
-use App\Role;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Illuminate\Http\Request;
+use PDF;
 
-class AdminController extends Controller
+class EquipmentStateReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,17 +17,16 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        $user= User::count();
-        $cashier= Cashier::count();
-        $equipment= Equipment::count();
-        $members= Member::count();
-        $trainer= Trainer::count();
-        $trainschedule = Trainschedule::count();
-        $role = Role::count();
+        $equipments = Equipment::all();
+
+        $pdf = PDF::loadView('equipmentreport',['equipments' => $equipments])-> setPaper('a4', 'potrait');
+        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+
+         
+        return $pdf->stream('equipmentstate.pdf');
+
         
-        return view('admin',compact('users','members','cashier','equipment','trainer','user','trainschedule','role'));
-        
+
     }
 
     /**
@@ -58,10 +53,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Equipment $equipment)
     {
         //
     }
@@ -69,10 +64,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Equipment $equipment)
     {
         //
     }
@@ -81,10 +76,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Equipment $equipment)
     {
         //
     }
@@ -92,11 +87,13 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Equipment $equipment)
     {
         //
     }
+
+    
 }

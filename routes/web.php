@@ -50,6 +50,8 @@ Route::middleware(['roles:Admin'])->group(function () {
 
     //Route::resource('admin/posts', 'Admin\\PostsController');
     Route::get('/equipmentchart', 'Equipment\\EquipmentsController@EquipsCharts')->name('Equipmentscharts');
+    Route::resource('/equipmentreport', 'EquipmentStateReportController');
+
     Route::resource('permisions', 'RolesController');
     Route::resource('membership/members', 'Membership\\MembersController');
     Route::resource('training/trainers', 'Training\\TrainersController');
