@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
 
 class LoginController extends Controller
 {
@@ -26,16 +28,6 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected function authenticated($request, $user){
-        // if ($user->hasRole('trainer')) {
-        //     return redirect('traineracc');
-        // }else {
-            return redirect('/home');
-        
-       
-
-    }
-
     //protected $redirectTo = '/home';
 
     /**
@@ -47,4 +39,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    protected function authenticated(Request $request, $user){
+        if ($user->hasRole('Admin')) {
+            return redirect('/admin');
+        } else if ($user->hasRole('user')) {
+            return redirect('/memberacc');
+        }else if ($user->hasRole('cashier')) {
+            return redirect('/cashieracc');
+        }else if ($user->hasRole('trainer')) {
+            return redirect('/traineracc');
+        }
+        
+       
+
+    }
+
+    //protected $redirectTo = '/home';
+
+    
 }

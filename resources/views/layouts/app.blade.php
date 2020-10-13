@@ -30,18 +30,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="container">
-                {{-- @foreach ($users as $user)
-                     @if ($user->hasRole('Admin'))
-                        <a class="nav-item" href="/admin">{{ __('MY_Dashboard') }}</a>
-                    @else
-                        <a class="nav-item" href="/cashiers/cashier">{{ __('MY_Dashboard') }}</a>
-                    @endif --}}
-                    
-                    
-                {{-- @endforeach --}}
-                   
-                </div>
+                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -86,9 +75,27 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @include('flash-message')
+        {{-- alerts --}}
+        @if(session()->has('flash_message'))
+            <div class="alert alert-success" role="alert">
+             <strong>Success:</strong> {{ session()->get('flash_message')}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
 
+        {{-- Error/Danger Alert --}}
+        @if(session()->has('flash_message_error'))
+            <div class="alert alert-danger" role="alert">
+                <strong>Error:</strong> {{ session()->get('flash_message_error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

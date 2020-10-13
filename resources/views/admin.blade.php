@@ -51,91 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      {{-- <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li> --}}
+      
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fas fa-th-large"></i></a>
@@ -172,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ url('/home') }}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt black"></i>
               <p>
                 {{-- <i class="fas fa-cogs"></i> --}}
@@ -182,10 +98,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
            <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs blue"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-cogs green"></i>
               <p>
-                Starter Pages
+                Settings
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -206,8 +122,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs blue"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-pie-chart red"></i>
               <p>
                 Charts
                 <i class="right fas fa-angle-left"></i>
@@ -218,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="{{ url('/equipmentchart') }}" class="nav-link active">
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
                   <i class="fas fa-flag-checkered"></i>
-                  <p>Assign roles</p>
+                  <p>equipments charts</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -231,8 +147,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs blue"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Reports
                 <i class="right fas fa-angle-left"></i>
@@ -270,16 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
             </a>
           </li>
-            {{-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/permi" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Assign roles</p>
-                </a>
-              </li>
-             
-            </ul> --}}
-          
+            
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -330,7 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Members</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-bag nav-icon"></i>
+                  <i class="fa fa-users nav-icon"></i>
                 </div>
                 <a href="#" class="small-box-footer">Members</a>
               </div>
@@ -341,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="inner">
                 <h3>{{ $equipment }}<sup style="font-size: 20px">%</sup></h3>
     
-                  <p>Bounce Rate</p>
+                  <p>EQUIPMENTS</p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-bell"></i>
@@ -353,12 +260,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
+                <h3>{{ $trainer }}</h3>
     
                   <p>Trainers</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="fa fa-unlock nav-icon"></i>
                 </div>
                 <a href="#" class="small-box-footer">Trainers</a>
               </div>
@@ -367,7 +274,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>65</h3>
+                <h3>{{ $cashier}}</h3>
     
                   <p>CASHIERS</p>
                 </div>
@@ -381,42 +288,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>65</h3>
+                <h3>{{$user}}</h3>
     
                   <p>Registered users</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-ticket nav-icon"></i>
                 </div>
-                <a href="#" class="small-box-footer">Cashiers </a>
+                <a href="#" class="small-box-footer"> </a>
               </div>
             </div>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-orange">
                 <div class="inner">
-                  <h3>65</h3>
+                <h3>{{ $trainschedule}}</h3>
     
                   <p>Training schedules</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-refresh nav-icon"></i>
                 </div>
-                <a href="#" class="small-box-footer">Cashiers </a>
+                <a href="#" class="small-box-footer"> </a>
               </div>
             </div>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-cyan">
                 <div class="inner">
-                  <h3>65</h3>
+                <h3>{{ $role }}</h3>
     
                   <p>Roles</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-id-card nav-icon"></i>
                 </div>
-                <a href="#" class="small-box-footer">Cashiers </a>
+                <a href="#" class="small-box-footer"> </a>
               </div>
             </div>
             
@@ -447,8 +354,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="float-right d-none d-sm-inline">
       Anything you want
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2020 <a href="#">Tersly-encoding</a>.</strong> All rights reserved.
+    <div class="copyright">
+      <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </div>
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -456,11 +366,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<!--script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<!--script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<!--script src="dist/js/adminlte.min.js"></script-->
+<script src="dist/js/adminlte.min.js"></script>
 {{-- <script src="dist/js/adminlte.min.js"></script> --}}
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

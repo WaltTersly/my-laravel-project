@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -66,6 +67,25 @@
                         </div>
                     </form>
                 </div>
+                 {{-- alerts --}}
+        @if(session()->has('flash_message'))
+            <div class="alert alert-success" role="alert">
+            <strong>Success:</strong> {{ session()->get('flash_message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+    {{-- Error/Danger Alert --}}
+        @if(session()->has('flash_message_error'))
+            <div class="alert alert-danger" role="alert">
+                <strong>Error:</strong> {{ session()->get('flash_message_error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
             </div>
         </div>
     </div>
