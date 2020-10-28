@@ -53,7 +53,8 @@ Route::middleware(['roles:Admin', 'auth'])->group(function () {
     //Route::resource('membership/members', 'Membership\\MembersController');
     //Route::resource('training/trainers', 'Training\\TrainersController');
     //Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-    //Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
+    Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
+    Route::resource('managers/manager','managers\\ManagerController');
     
 
 });
@@ -79,9 +80,10 @@ Route::middleware(['roles:user', 'auth'])->group(function () {
         
 
     ]);
-    //Route::resource('membership/members', 'Membership\\MembersController');
+    
     
     Route::get('/memberprofile', 'MemberprofileController@index');
+    Route::resource('membership/members', 'Membership\\MembersController');
     
     
 });
@@ -94,7 +96,7 @@ Route::middleware(['roles:cashier','auth'])->group(function () {
         
 
     ]);
-    //Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
+    Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
     Route::get('/cashierprofile', 'CashierprofileController@index');
     
 });
@@ -145,17 +147,7 @@ Route::middleware(['roles:Admin', 'roles:trainer', 'roles:manager', 'auth'])->gr
 
 });
 
-//Routes shared by admin and member and cashier
-Route::middleware(['roles:Admin', 'roles:user', 'roles:cashier', 'auth'])->group(function () {
-    Route::resource('membership/members','Membership\\MembersController'); 
 
-});
-
-//Routes shared by admin and cashier
-Route::middleware(['roles:Admin', 'roles:cashier', 'auth'])->group(function () {
-    Route::resource('cashier/cashiers','Cashier\\CashiersController'); 
-
-});
 
 
 //Route shared by admin and manager

@@ -34,12 +34,12 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="{{ url('/cashier/cashiers') }}">
+                <a href="{{ url('cashier/cashiers') }}">
                     cashiers
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="{{ url('/training/trainers') }}">
+                <a href="{{ url('training/trainers') }}">
                     Trainers
                 </a>
             </li>
