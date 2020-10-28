@@ -19,6 +19,7 @@ return view('welcome');
 
 Auth::routes();
 
+// Admin routes
 Route::middleware(['roles:Admin', 'auth'])->group(function () {
 
     Route::get('/admin', [
@@ -49,14 +50,15 @@ Route::middleware(['roles:Admin', 'auth'])->group(function () {
     Route::resource('/equipmentreport', 'EquipmentStateReportController');
 
     Route::resource('permisions', 'RolesController');
-    Route::resource('membership/members', 'Membership\\MembersController');
-    Route::resource('training/trainers', 'Training\\TrainersController');
-    Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-    Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
-    //route::resource('/admin', 'AdminController');
+    //Route::resource('membership/members', 'Membership\\MembersController');
+    //Route::resource('training/trainers', 'Training\\TrainersController');
+    //Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
+    //Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
+    
 
 });
 
+// Trainers routes
 Route::middleware(['roles:trainer', 'auth'])->group(function () {
     Route::get('/traineracc', [
         'uses' => 'TraineraccController@index',
@@ -69,6 +71,7 @@ Route::middleware(['roles:trainer', 'auth'])->group(function () {
     Route::get('/profile', 'ProfileController@index');
 });
 
+//Memebers rouutes
 Route::middleware(['roles:user', 'auth'])->group(function () {
     Route::get('/memberacc', [
         'uses' => 'MemberaccController@index',
@@ -76,17 +79,14 @@ Route::middleware(['roles:user', 'auth'])->group(function () {
         
 
     ]);
-    Route::resource('membership/members', 'Membership\\MembersController');
-    //Route::resource('/training/trainers', 'Training\\TrainersController');
+    //Route::resource('membership/members', 'Membership\\MembersController');
+    
     Route::get('/memberprofile', 'MemberprofileController@index');
-    Route::get('/profilepicture', 'AvatarController@getProfileAvatar')->name('profileavatar');
-    Route::post('/profilepicture', 'AvatarController@profilePictureUpload')->name('profileavatar');
-    Route::get('changepassword', 'Auth\ChangePasswordController@index')->name('password.change');
-    Route::post('changepassword', 'Auth\ChangePasswordController@updatePassword')->name("password.update");
-    //Route::get('/memberprofile', 'MemberprofileController@updatePassword');
+    
+    
 });
 
-
+//Cashiers routes
 Route::middleware(['roles:cashier','auth'])->group(function () {
     Route::get('/cashieracc', [
         'uses' => 'CashieraccController@index',
@@ -94,47 +94,75 @@ Route::middleware(['roles:cashier','auth'])->group(function () {
         
 
     ]);
-    Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-    //Route::resource('/training/trainers', 'Training\\TrainersController');
+    //Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
     Route::get('/cashierprofile', 'CashierprofileController@index');
-    Route::get('/profilepicture', 'AvatarController@getProfileAvatar')->name('profileavatar');
-    Route::post('/profilepicture', 'AvatarController@profilePictureUpload')->name('profileavatar');
-    Route::get('changepassword', 'Auth\ChangePasswordController@index')->name('password.change');
-    Route::post('changepassword', 'Auth\ChangePasswordController@updatePassword')->name("password.update");
+    
 });
 
-// Route::middleware(['roles:manager','auth'])->group(function () {
-//     Route::get('/cashieracc', [
-//         'uses' => 'CashieraccController@index',
-//         'as' => 'cashieracc',
-        
 
-//     ]);
-//     Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-//     //Route::resource('/training/trainers', 'Training\\TrainersController');
-//     Route::get('/cashierprofile', 'CashierprofileController@index');
-//     Route::get('/profilepicture', 'AvatarController@getProfileAvatar')->name('profileavatar');
-//     Route::post('/profilepicture', 'AvatarController@profilePictureUpload')->name('profileavatar');
-//     Route::get('changepassword', 'Auth\ChangePasswordController@index')->name('password.change');
-//     Route::post('changepassword', 'Auth\ChangePasswordController@updatePassword')->name("password.update");
-// });
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/profile', 'ProfileController@index');
-
-Route::resource('trschedule/trainschedule', 'trschedule\\TrainscheduleController');
-Route::resource('managers/manager', 'managers\\ManagerController');
-Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-Route::get('changepassword', 'Auth\ChangePasswordController@index')->name('password.change');
-Route::post('changepassword', 'Auth\ChangePasswordController@updatePassword')->name("password.update");
-Route::get('/profilepicture', 'AvatarController@getProfileAvatar')->name('profileavatar');
-Route::post('/profilepicture', 'AvatarController@profilePictureUpload')->name('profileavatar');
 
 
-
-// Route::resource('membership/members', 'Membership\\MembersController');
-// Route::resource('training/trainers', 'Training\\TrainersController');
+// Route::resource('trschedule/trainschedule', 'trschedule\\TrainscheduleController');
+// Route::resource('managers/manager', 'managers\\ManagerController');
 // Route::resource('cashier/cashiers', 'Cashier\\CashiersController');
-// Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
-// route::resource('/admin','AdminController');
+
+
+//shared routes by all
+Route::middleware(['auth', 'web'])->group(function () {
+    Route::get('/changepassword',[
+        'uses' => 'Auth\ChangePasswordController@index',
+        'as' =>  'password.change',
+        'roles' => ['Admin', 'trainer', 'user', 'cashier', 'manager']
+
+    ]);
+    Route::post('/changepassword',[
+        'uses' => 'Auth\ChangePasswordController@updatepassword',
+        'as' =>  'password.update',
+        'roles' => ['Admin', 'trainer', 'user', 'cashier', 'manager']
+
+    ]);
+    Route::get('/profilepicture',[
+        'uses' => 'AvatarController@getProfileAvatar',
+        'as' =>  'profileavatar',
+        'roles' => ['Admin', 'trainer', 'user', 'cashier', 'manager']
+
+    ]);
+    Route::post('/profilepicture',[
+        'uses' => 'AvatarController@profilePictureUpload',
+        'as' =>  'profileavatar',
+        'roles' => ['Admin', 'trainer', 'user', 'cashier', 'manager']
+
+    ]);
+
+});
+
+//Routes shared by admin and trainers and managers
+Route::middleware(['roles:Admin', 'roles:trainer', 'roles:manager', 'auth'])->group(function () {
+    Route::resource('/training/trainers','Training\\TrainersController');
+    Route::resource('trschedule/trainschedule', 'trschedule\\TrainscheduleController');
+
+});
+
+//Routes shared by admin and member and cashier
+Route::middleware(['roles:Admin', 'roles:user', 'roles:cashier', 'auth'])->group(function () {
+    Route::resource('membership/members','Membership\\MembersController'); 
+
+});
+
+//Routes shared by admin and cashier
+Route::middleware(['roles:Admin', 'roles:cashier', 'auth'])->group(function () {
+    Route::resource('cashier/cashiers','Cashier\\CashiersController'); 
+
+});
+
+
+//Route shared by admin and manager
+Route::middleware(['roles:Admin', 'roles:manager', 'auth'])->group(function () {
+    Route::resource('equipment/equipments', 'Equipment\\EquipmentsController');
+    Route::resource('managers/manager','managers\\ManagerController');
+
+});
+
 });

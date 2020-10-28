@@ -75,7 +75,7 @@ class User extends Authenticatable
         }
         return false;
     }
-
+//relationships with various tables
     public function trainer()
     {
         //one to one relationship with the trainer model
@@ -92,6 +92,12 @@ class User extends Authenticatable
     {
 
         return $this->hasOne('App\Cashier');
+    }
+
+    public function manager()
+    {
+
+        return $this->hasOne('App\Manager');
     }
 
 }

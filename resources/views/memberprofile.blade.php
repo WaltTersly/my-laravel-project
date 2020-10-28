@@ -136,15 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
             </a>
           </li>
-            {{-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/permi" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Assign roles</p>
-                </a>
-              </li>
-             
-            </ul> --}}
+            
           
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -285,12 +277,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<!--script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<!--script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<!--script src="dist/js/adminlte.min.js"></script-->
-{{-- <script src="dist/js/adminlte.min.js"></script> --}}
+<script src="dist/js/adminlte.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
