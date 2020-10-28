@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Member;
+use App\Charts\MembersRegistrationChart;
 use Illuminate\Http\Request;
 
 class MembersController extends Controller
@@ -62,7 +63,11 @@ class MembersController extends Controller
         
        // $requestData = $request->all();
         
-       // Member::create($requestData);
+       $request->validate([
+        'idnumber' => 'required|integer',
+        'registration_day' => 'required|date',
+        
+    ]);
        
        $member = new Member;
 
@@ -143,5 +148,28 @@ class MembersController extends Controller
         Member::destroy($id);
 
         return redirect('membership/members')->with('flash_message', 'Member deleted!');
+    }
+
+    public function Memberschart()
+    {
+
+        //setting up data to be passed to the chart via eloquent
+       //setting up data to be passed to the chart via eloquent
+       $data = Member::all()
+       ->groupBy('registration_day')
+       ->map(function($item){
+           //return number of members in differnt dates of registration of the gym
+           return count($item);
+       });
+
+        $chart = new MembersRegistrationChart;
+        $chart->title('Number of members registered');
+        $chart-> labels($data->keys());
+        $dataset = 
+        $chart->dataset('Members registered in ', 'bar', $data->values());
+        $dataset->backgroundColor(collect(['#7158e2','#3ae374', '#ff3838']));
+        $dataset->color(collect(['#7d5fff','#32ff7e', '#ff4d4d']));
+
+        return view('/memberchart',compact('chart'));
     }
 }

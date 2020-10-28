@@ -45,11 +45,11 @@ Route::middleware(['roles:Admin', 'auth'])->group(function () {
 
 
 
-    //Route::resource('admin/posts', 'Admin\\PostsController');
+    Route::resource('permisions', 'RolesController');
     Route::get('/equipmentchart', 'Equipment\\EquipmentsController@EquipsCharts')->name('Equipmentscharts');
     Route::resource('/equipmentreport', 'EquipmentStateReportController');
-
-    Route::resource('permisions', 'RolesController');
+    Route::get('/memberchart', 'Membership\\MembersController@Memberschart');
+    
     //Route::resource('membership/members', 'Membership\\MembersController');
     //Route::resource('training/trainers', 'Training\\TrainersController');
     //Route::resource('cashier/cashiers', 'Cashier\\CashiersController');

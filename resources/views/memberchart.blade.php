@@ -206,15 +206,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   {!! $chart->container() !!}
 
                 </div>
-                <div class="card-body py-3 px-3">
-                  {!! $chart1->container() !!}
-
-                </div>
-                <div class="card-body py-3 px-3">
-                  {!! $chart2->container() !!}
-
-                </div>
-
               </div>
                 
                
@@ -268,7 +259,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('js/app.js') }}"></script>
 {!! $chart->script() !!}
 
-{!! $chart1->script() !!}
-{!! $chart2->script() !!}
 </body>
 </html>

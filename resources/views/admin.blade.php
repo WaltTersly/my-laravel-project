@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>GYMMS</title>
 
   <!-- Font Awesome Icons -->
-  <!--link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -135,6 +135,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   {{-- <i class="far fa-circle nav-icon"></i> --}}
                   <i class="fas fa-flag-checkered"></i>
                   <p>equipments charts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('/memberchart') }}" class="nav-link active">
+                  {{-- <i class="far fa-circle nav-icon"></i> --}}
+                  <i class="fas fa-flag-checkered"></i>
+                  <p>Members charts</p>
                 </a>
               </li>
               <li class="nav-item">

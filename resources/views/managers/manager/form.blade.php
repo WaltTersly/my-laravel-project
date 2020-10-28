@@ -16,8 +16,8 @@
 <div class="form-group {{ $errors->has('Gender') ? 'has-error' : ''}}">
     <label for="Gender" class="control-label">{{ 'Gender' }}</label>
     <select name="Gender" class="form-control" id="Gender" >
-    @foreach (json_decode('{male:Male,female:Female,other:Other}', true) as $optionKey => $optionValue)
-        <option value="{{ $optionKey }}" {{ (isset($manager->Gender) && $manager->Gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+        @foreach ($manager->managergender() as $optionKey => $optionValue)
+        <option value="{{ $optionKey }}" {{ (isset($manager->gender) && $manager->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
 </select>
     {!! $errors->first('Gender', '<p class="help-block">:message</p>') !!}
